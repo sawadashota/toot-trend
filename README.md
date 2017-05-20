@@ -17,6 +17,21 @@ RAILS_SERVE_STATIC_FILES=true
 PWD=/var/www/html/app
 ```
 
+### Remove comment out docker-compose.yml for production mode
+```yaml:docker-compose.yml
+services:
+  web:
+    command: rails s -p 3000 -b '0.0.0.0' #-e production
+```
+
+to like this.
+
+```yaml:docker-compose.yml
+services:
+  web:
+    command: rails s -p 3000 -b '0.0.0.0' -e production
+```
+
 ### Migration and Asset Precompile
 ```bash
 $ docker-compose run --rm web rails seed:admin email=your.email@example.com password=passowrd RAILS_ENV=production
@@ -55,3 +70,10 @@ server {
   }
 }
 ```
+
+### Cron Refresh
+#### toots:fetch
+Refresh data which last update is more than 3 days ago. 
+
+## License
+MIT
