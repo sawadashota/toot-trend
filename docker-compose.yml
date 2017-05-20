@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+  web:
+    restart: unless-stopped
+    privileged: true
+    hostname: toot-trend
+    build: .
+    links:
+      - mongo
+    volumes:
+      - .:/var/www/html/app
+    ports:
+      - 9182:3000
+    command: rails s -p 3000 -b '0.0.0.0' #-e production
+  mongo:
+    restart: unless-stopped
+    image: mongo:latest
+    ports:
+      - 27027:27017
+    volumes:
+      - ./mongodb:/data/db

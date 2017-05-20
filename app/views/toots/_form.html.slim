@@ -1,0 +1,9 @@
+- @toot = Toot.new if @toot.nil?
+#form= form_for @toot do |f|
+  - if @toot.errors.any?
+    #error_explanation
+      ul
+        - @toot.errors.full_messages.each do |message|
+          li = message
+  = f.text_field :instance, placeholder: 'mstdn.ho-chi-minh.info'
+  .actions = f.button 'Request To Add'

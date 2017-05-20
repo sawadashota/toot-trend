@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans');
+@import 'mixin/mixin';
+
+html, body {
+  font-family : 'Work Sans', sans-serif;
+  font-size   : 16px;
+  line-height : 150%;
+}
+
+h1#logo {
+  font-size     : 2rem;
+  line-height   : 300%;
+  text-align    : center;
+  margin-bottom : 30px;
+}
+
+#wordClouds {
+  width                   : 90%;
+  margin                  : 80px auto;
+  display                 : flex;
+  -webkit-justify-content : space-around; /* Safari */
+  justify-content         : space-around;
+  -webkit-flex-wrap       : wrap; /* Safari */
+  flex-wrap               : wrap;
+  @include max-screen($breakpoint-mobile) {
+    display : block;
+    margin  : 40px auto;
+  }
+
+  section {
+    width      : 30%;
+    margin-top : -80px;
+    &:first-child, &:nth-child(2), &:nth-child(3) {
+      margin-top : 0;
+    }
+
+    @include max-screen($breakpoint-mobile) {
+      width      : 100%;
+      margin-top : -100px;
+      &:first-child {
+        margin-top : 0;
+      }
+    }
+
+    h1 {
+      font-size   : 1.5rem;
+      line-height : 150%;
+      padding     : 20px 0;
+      font-weight : bold;
+      a {
+        text-decoration : none;
+        color           : inherit;
+        transition      : $transitionTime;
+        &:hover {
+          color : #0075c2;
+        }
+      }
+    }
+    .instance {
+      width     : 100%;
+      max-width : 500px;
+    }
+  }
+}
+
+#form {
+  margin-top : 50px;
+  text-align : center;
+  #error_explanation {
+    color : #f00;
+  }
+  .field_with_errors {
+    display : inline-block;
+  }
+  #toot_instance {
+    width     : 400px;
+    max-width : 90%;
+    padding   : 5px 10px;
+    font-size : 1.1rem;
+  }
+  .actions {
+    display : inline-block;
+    @include max-screen($breakpoint-mobile) {
+      margin-top : 20px;
+    }
+    button {
+      padding          : 8px 10px;
+      background-color : #2ca9e1;
+      font-size        : 1rem;
+      color            : #fff;
+      transition       : $transitionTime;
+      &:hover {
+        background-color : #17184b;
+      }
+    }
+  }
+}
+
+footer {
+  text-align : center;
+  padding    : 5px 0;
+  margin-top : 80px;
+  a {
+    text-decoration : none;
+    color           : inherit;
+  }
+}

@@ -1,0 +1,63 @@
+$breakpoint-tablet: 768px;
+$breakpoint-mobile: 640px;
+$set-prefix: -moz-, -webkit-, -ms-, '';
+
+$transitionTime : .5s;
+
+@mixin max-screen($break-point) {
+  @media screen and (max-width: $break-point) {
+    @content;
+  }
+}
+
+@mixin min-screen($break-point) {
+  @media screen and (min-width: $break-point) {
+    @content;
+  }
+}
+
+@mixin screen($break-point-min, $break-point-max) {
+  @media screen and (min-width: $break-point-min) and (max-width: $break-point-max) {
+    @content;
+  }
+}
+
+@mixin cover-content{
+  position: absolute;
+  top:      0;
+  bottom:   0;
+  left:     0;
+  right:    0;
+}
+
+@mixin PropertySetPrefix($name, $value) {
+  @each $prefix in $set-prefix{
+    #{$prefix}#{$name}: $value;
+  }
+}
+
+@mixin seeMore{
+  &:after{
+    transition:          $transitionTime;
+    opacity:             0;
+    position:            absolute;
+    @include cover-content;
+    background-color:    rgba(#000, .6);
+    content:             "";
+    color:               #fff;
+    text-align:          center;
+    font-size:           1.4rem;
+    background-image:    url('/imgs/see_more.png');
+    background-position: center center;
+    background-repeat:   no-repeat;
+    background-size:     116px auto;
+    @include max-screen($breakpoint-mobile){
+      background-size:     77.3px auto;
+    }
+  }
+  &:hover{
+    &:after{
+      opacity: 1;
+    }
+  }
+}

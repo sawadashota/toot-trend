@@ -1,0 +1,57 @@
+@import 'mixin/mixin';
+
+#logout {
+  position : fixed;
+  top      : 30px;
+  right    : 30px;
+  .btn {
+    $color : #888;
+    $hover-color : #efefef;
+    padding          : 8px 10px;
+    background-color : #fff;
+    font-size        : 1rem;
+    color            : $color;
+    transition       : $transitionTime;
+    text-decoration  : none;
+    border           : 1px solid $color;
+    &:hover {
+      background-color : $hover-color;
+    }
+  }
+}
+
+.list {
+  width  : 60%;
+  margin : 0 auto;
+  th, td {
+    padding : 5px 10px;
+    border  : 1px solid #000;
+  }
+  th {
+    font-weight : bold;
+  }
+  td {
+    button {
+      $bg-color : #f3981d;
+      padding          : 8px 10px;
+      background-color : $bg-color;
+      font-size        : 1rem;
+      transition       : $transitionTime;
+      &:hover {
+        background-color : darken($bg-color, 15%);
+      }
+      a {
+        color           : #fff;
+        text-decoration : none;
+      }
+      &.delete {
+        margin-left      : 10px;
+        $bg-color : #ea5550;
+        background-color : $bg-color;
+        &:hover {
+          background-color : darken($bg-color, 15%);
+        }
+      }
+    }
+  }
+}

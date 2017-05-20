@@ -1,0 +1,28 @@
+h1#logo Toot Trend Admin
+
+#logout
+  = link_to 'Logout', logout_path, method: :delete, class: 'btn'
+
+table.list
+  thead
+    tr
+      th Instance
+      th Has Contents
+      th Created At
+      th Last Update
+      th
+
+  tbody
+    - @toots.each do |toot|
+      tr
+        td = link_to toot.instance, instance_url(toot.instance), { target: '_blank' }
+        td = toot.words.present? ? 'Yes' : 'No'
+        td = toot.created_at.in_time_zone('Tokyo').strftime('%Y.%m.%d %T')
+        td
+          - if toot[:updating].present? && toot[:updating]
+            | Updating...
+          - else
+            = toot.updated_at.in_time_zone('Tokyo').strftime('%Y.%m.%d %T')
+        td
+          button.fetch= link_to 'Fetch', fetch_path(toot), data: { confirm: 'Wanna fetch?' }, method: :put
+          button.delete= link_to 'Destroy', delete_toot_path(toot), data: { confirm: 'Are you sure?' }, method: :delete

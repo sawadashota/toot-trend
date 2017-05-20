@@ -1,0 +1,13 @@
+h1#logo Toot Trend
+
+== render 'form'
+
+#wordClouds
+  - @toots.each_with_index do |instance, i|
+    section id="#{instance.instance}"
+      h1
+        = link_to '@' + instance.instance, instance_url(instance.instance), { target: '_blank' }
+      - if instance.words.present?
+        svg.instance.empty data-instance="#{instance.instance}" id="instance-#{i.to_s}"
+      - else
+        .coming-soon In Waiting List.

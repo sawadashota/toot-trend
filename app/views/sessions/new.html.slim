@@ -1,0 +1,8 @@
+h1#logo Toot Trend Admin
+#login
+  h2 Login
+
+  = form_for @admin, url: login_path do |f|
+    .field= f.text_field :email
+    .field= f.password_field :password
+    .actions = f.button 'Login'

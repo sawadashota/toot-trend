@@ -1,0 +1,37 @@
+@import 'mixin/mixin';
+
+#login {
+  h2 {
+    font-size  : 1.5rem;
+    text-align : center;
+    margin     : 30px 0;
+  }
+  form {
+    .field {
+      margin     : 20px auto;
+      text-align : center;
+      input {
+        width     : 400px;
+        max-width : 90%;
+        padding   : 5px 10px;
+        font-size : 1.1rem;
+      }
+    }
+    .actions {
+      text-align : center;
+      @include max-screen($breakpoint-mobile) {
+        margin-top : 20px;
+      }
+      button {
+        padding          : 8px 10px;
+        background-color : #2ca9e1;
+        font-size        : 1rem;
+        color            : #fff;
+        transition       : $transitionTime;
+        &:hover {
+          background-color : #17184b;
+        }
+      }
+    }
+  }
+}
